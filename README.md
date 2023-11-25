@@ -1,13 +1,36 @@
-# Navigating Vector Operations in Azure SQL for Better Data Insights: A Guide How to Use Generative AI to Prompt Queries in Datasets
+# Navigating Vector Operations in Azure SQL for Enhanced Data Insights: A Comprehensive Guide 
 
-#Created by Lawrence Teixeira
-#Date 11/25/2023
+## Leveraging Generative AI for Efficient Dataset Querying
 
-To install the requeriments click:
+### Author: Lawrence Teixeira
+### Date: November 25, 2023
+
+---
+
+## Installation
+
+To get started with this project, first install the required dependencies. Run the following command in your terminal:
+
+```bash
 pip install -r requirements.txt
+```
 
-To update the vectors fields in the table, change the app.py and click:
+## Updating Vector Fields
+
+If you need to update the vector fields in your database table, modify `app.py` accordingly. Once you've made your changes, execute the script with the following command:
+
+```bash
 python app.py
+```
 
-To create the streamlit app click:
+## Running the Streamlit App
+
+To launch the Streamlit application, use the following command:
+
+```bash
 streamlit run search.py
+```
+
+This will start the Streamlit server and the application will be accessible through your web browser.
+
+---
