@@ -9,7 +9,7 @@ load_dotenv()
 # Set up OpenAI credentials
 # Set up OpenAI credentials from environment variables
 openai.api_type = os.getenv('OPENAI_API_TYPE')
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key ='3a669b6667bf46bca2cb1f3d2e0d467e'#os.getenv('OPENAI_API_KEY')
 openai.api_base = os.getenv('OPENAI_API_BASE')
 openai.api_version = os.getenv('OPENAI_API_VERSION')
 
