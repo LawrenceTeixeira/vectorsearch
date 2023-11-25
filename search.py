@@ -2,21 +2,26 @@ import streamlit as st
 import pandas as pd
 import pyodbc
 import openai
+import os
+from dotenv import load_dotenv
 
-# Set up OpenAI credentials
-openai.api_type = "azure"
-openai.api_key = "3a669b6667bf46bca2cb1f3d2e0d467e"
-openai.api_base = "https://gptopenai0.openai.azure.com/"
-openai.api_version = "2023-07-01-preview"
+# Load environment variables from .env file
+load_dotenv()
+
+# Set up OpenAI credentials from environment variables
+openai.api_type = os.getenv('OPENAI_API_TYPE')
+openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_base = os.getenv('OPENAI_API_BASE')
+openai.api_version = os.getenv('OPENAI_API_VERSION')
 # or from sqlalchemy import create_engine
 
 # Function to connect to the database
 def get_connection():
-    server = 'blog0.database.windows.net' 
-    database = 'bloguser' 
-    username = 'saroot' 
-    password = '766587La' 
-    cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + server + ';DATABASE=' + database + ';UID=' + username + ';PWD=' + password)
+    cnxn = pyodbc.connect(f'DRIVER={{ODBC Driver 17 for SQL Server}};'
+                      f'SERVER={os.getenv("DB_SERVER")};'
+                      f'DATABASE={os.getenv("DB_DATABASE")};'
+                      f'UID={os.getenv("DB_UID")};'
+                      f'PWD={os.getenv("DB_PWD")}')
     # or use sqlalchemy: engine = create_engine(f"mssql+pyodbc://{username}:{password}@{server}/{database}?driver=ODBC+Driver+17+for+SQL+Server")
     return cnxn
 
