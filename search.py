@@ -41,10 +41,6 @@ def main():
         page_icon="🧊",
         layout="wide",
         initial_sidebar_state="expanded",
-        menu_items={
-            'Get Help': 'https://www.gov.br/inpi/pt-br',
-            'About': "This app is designed to guide you through the fundamental procedures of safeguarding your trademarks, patents, industrial designs, geographical indications, computer programs, circuit topographies, and technology contracts with the Brazilian Patent and Trademark Office (BRPTO)."
-        }
     )
 
 
