@@ -53,13 +53,14 @@ def main():
         ""
         "Created by [Lawrence Teixeira](https://www.linkedin.com/in/lawrenceteixeira/)"
         ""
+        "Source: [Global News Dataset](https://www.kaggle.com/datasets/everydaycodings/global-news-dataset/)" 
         ""
         "Please note that this is only an example to demonstrate the results of a vector similarity search."    
     
-    st.title("Vector Similarity Search with Azure SQL")
+    st.title("Vector Similarity Search in Azure SQL")
 
     # Text input for search query
-    search_query = st.text_input("Enter your search query:")
+    search_query = st.text_input("Input your search in the news dataset, e.g., 'Generative AI: The Future Unveiled.:'")
 
     if st.button("Search"):
         # Connection to the database
@@ -73,7 +74,7 @@ def main():
         # Executar a stored procedure
         cnxn.execute(stored_procedure)
         
-        query = "SELECT r.cosine_distance, r.published, r.category, r.author, r.title, r.full_content, r.url FROM result R order by r.cosine_distance DESC"
+        query = "SELECT r.cosine_distance, r.published, r.category, r.title, r.author, r.full_content, r.url FROM result R order by r.cosine_distance DESC"
 
         # Executing the query
         df = pd.read_sql(query, cnxn)
