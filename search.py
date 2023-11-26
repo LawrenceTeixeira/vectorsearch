@@ -47,20 +47,20 @@ def main():
     with st.sidebar:
         st.image("https://i.pinimg.com/736x/b8/4b/3a/b84b3a2604e591c53777cd190576ba55--image-search.jpg")   
         ""
-        "Vector Similarity Search with Azure SQL database and OpenAI"
+        "[Navigating Vector Operations in Azure SQL for Better Data Insights](https://lawrence.eti.br/2023/11/25/navigating-vector-operations-in-azure-sql-for-better-data-insights-a-guide-how-to-use-generative-ai-to-prompt-queries-in-datasets/)"
         "Vector databases are gaining quite a lot of interest lately. Using text embeddings and vector operations makes extremely easy to find similar “things”. Things can be articles, photos, products…everything. As one can easily imagine, this ability is great to easily implement suggestions in applications. From providing suggestions on similar articles or other products that may be of interest, to quickly finding and grouping similar items, the applications are many."
         ""
         ""
-        "Created by [Lawrence Teixeira](https://www.linkedin.com/in/lawrenceteixeira/)"
-        ""
         "Source: [Global News Dataset](https://www.kaggle.com/datasets/everydaycodings/global-news-dataset/)" 
         ""
-        "Please note that this is only an example to demonstrate the results of a vector similarity search."    
+        "Created by [Lawrence Teixeira](https://www.linkedin.com/in/lawrenceteixeira/)"
+        ""
+        "Please remember, this is merely a sample to illustrate the outcomes of a vector similarity search, as detailed in the preceding article."    
     
     st.title("Vector Similarity Search in Azure SQL")
 
     # Text input for search query
-    search_query = st.text_input("Input your search in the news dataset, e.g., 'Generative AI: The Future Unveiled.:'")
+    search_query = st.text_input("Type here your search:", placeholder="e.g., 'Generative AI: The Future Unveiled'")
 
     if st.button("Search"):
         # Connection to the database
