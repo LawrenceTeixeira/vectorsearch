@@ -18,20 +18,21 @@ openai.api_version = os.getenv('OPENAI_API_VERSION')
 
 # Function to connect to the database
 def get_connection():
-    while True:
-        try:
-            cnxn = pyodbc.connect(
-                f'DRIVER={{ODBC Driver 17 for SQL Server}};'
-                f'SERVER={os.getenv("DB_SERVER")};'
-                f'DATABASE={os.getenv("DB_DATABASE")};'
-                f'UID={os.getenv("DB_UID")};'
-                f'PWD={os.getenv("DB_PWD")}',
-                timeout=5
-            )
-            return cnxn
-        except pyodbc.OperationalError:
-            print("Connection failed, retrying in 2 seconds...")
-            time.sleep(2)
+    with st.spinner('I am trying to connect to the database. This operation may take a few seconds if the database is paused. Please wait a moment...'):
+        while True:
+            try:
+                cnxn = pyodbc.connect(
+                    f'DRIVER={{ODBC Driver 17 for SQL Server}};'
+                    f'SERVER={os.getenv("DB_SERVER")};'
+                    f'DATABASE={os.getenv("DB_DATABASE")};'
+                    f'UID={os.getenv("DB_UID")};'
+                    f'PWD={os.getenv("DB_PWD")}',
+                    timeout=5
+                )
+                return cnxn
+            except pyodbc.OperationalError:
+                print("Connection failed, retrying in 2 seconds...")
+                time.sleep(2)
 
 def get_embeddings(text):
     # Truncate the text to 8000 characters
@@ -85,6 +86,7 @@ def main():
         query = "SELECT r.cosine_distance, r.published, r.category, r.title, r.author, r.full_content, r.url FROM result R order by r.cosine_distance DESC"
 
         # Executing the query
+        with st.spinner('Executing the search...'):
         df = pd.read_sql(query, cnxn)
 
         # Displaying results
