@@ -87,7 +87,7 @@ def main():
 
         # Executing the query
         with st.spinner('Executing the search...'):
-        df = pd.read_sql(query, cnxn)
+            df = pd.read_sql(query, cnxn)
 
         # Displaying results
         if not df.empty:
